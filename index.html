@@ -336,6 +336,22 @@
             </li>
           </ul>
         </div>
+        <div class="ft-subscribe">
+          <form name="subscribe" method="post" action="javascript:void(0);">
+            <label for="ft-subscribe-email"> Zapisz się do newslettera </label>
+            <div class="ft-subscribe-cont">
+              <fieldset class="ft-subscribe-field">
+                <input type="email" name="email" id="ft-subscribe-email" placeholder="E-mail..." />
+              </fieldset>
+              <button class="ft-subscribe-btn" type="submit">
+                Zapisz się
+                <svg class="ft-subscribe-icon" width="24" height="24">
+                  <use href="./images/icons.svg#icon-send"></use>
+                </svg>
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </footer>
     <div class="backdrop is-hidden" data-modal>
@@ -345,6 +361,48 @@
             <use href="./images/icons.svg#icon-close"></use>
           </svg>
         </button>
+        <h2>Zostaw swoje dane w formularzu poniżej</h2>
+        <form name="contact" method="post" action="javascript:void(0);">
+          <label for="modal-contact-name">Imię</label>
+          <fieldset class="modal-contact-field">
+            <svg class="modal-contact-icon" width="18" height="18">
+              <use href="./images/icons.svg#icon-person"></use>
+            </svg>
+            <input type="text" name="name" id="modal-contact-name" />
+          </fieldset>
+          <label for="modal-contact-phone">Telefon</label>
+          <fieldset class="modal-contact-field">
+            <svg class="modal-contact-icon" width="18" height="18">
+              <use href="./images/icons.svg#icon-phone"></use>
+            </svg>
+            <input type="tel" name="phone" id="modal-contact-phone" />
+          </fieldset>
+          <label for="modal-contact-email">E-mail</label>
+          <fieldset class="modal-contact-field">
+            <svg class="modal-contact-icon" width="18" height="18">
+              <use href="./images/icons.svg#icon-email"></use>
+            </svg>
+            <input type="email" name="email" id="modal-contact-email" />
+          </fieldset>
+          <label for="modal-contact-comment">Komentarz</label>
+          <textarea
+            name="comment"
+            id="modal-contact-comment"
+            placeholder="Wprowadź tekst..."
+          ></textarea>
+          <div class="modal-contact-agreement">
+            <input
+              type="checkbox"
+              name="agreement"
+              class="modal-contact-checkmark"
+              id="modal-contact-agreement"
+            />
+            <label for="modal-contact-agreement">Oświadczam</label>
+            , iż akceptuję <a class="modal-contact-link" href="#" target="_blank">Regulamin</a> i
+            <a class="modal-contact-link" href="#" target="_blank">Politykę Prywatności</a>.
+          </div>
+          <button class="modal-contact-btn" type="submit">Wyślij</button>
+        </form>
       </div>
     </div>
     <script src="./js/modal.js"></script>
