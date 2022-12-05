@@ -56,7 +56,14 @@
   --modal-dec-border-color: #21212133; /* modal decorations (borders) color */
   --modal-dec-icon-color: #212121; /* modal decorations (icons) color */
   --modal-dec-active-color: #2196f3; /* modal decorations (borders, icons) color upon input */
-  --modal-placeholder-color: #75757580; /* modal fields' placeholder color */
+  --modal-placeholder-color: #75757580; /* modal fields placeholder color */
+  --modal-link-color: #2196f3; /* modal links color */
+  --modal-link-active-color: #212121; /* hovered over or focused modal link color */
+  --modal-checkmark-color: #ffffff; /* modal form checkmark color */
+  --modal-btn-bg-color: #2196f3; /* nonactive modal button background color */
+  --modal-btn-bg-active-color: #f5f4fa; /* active modal button background color */
+  --modal-btn-txt-color: #ffffff; /* nonactive modal button content color */
+  --modal-btn-txt-active-color: #212121; /* active modal button content color */
 
   /* ====Portfolio==== */
 
@@ -124,6 +131,7 @@ header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .container nav {
@@ -233,6 +241,7 @@ header .container {
 .footer .container {
   padding: 60px 15px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .footer {
@@ -366,6 +375,7 @@ header .container {
   align-items: center;
   border: none;
   border-radius: 4px;
+  outline: none;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
   color: var(--ft-btn-txt-color);
   background-color: var(--ft-btn-bg-color);
@@ -429,6 +439,7 @@ header .container {
   color: var(--banner-btn-txt-color);
   border: none;
   border-radius: 4px;
+  outline: none;
   font-size: 16px;
   font-weight: 700;
   line-height: 1.88;
@@ -458,6 +469,7 @@ header .container {
 .opinions ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -469,9 +481,13 @@ header .container {
   display: none;
 }
 
+.opinions li {
+  max-width: 270px;
+}
+
 .opinions-icon-cont {
-  min-width: 270px;
-  min-height: 120px;
+  max-width: 270px;
+  max-height: 120px;
   border-radius: 4px;
   background-color: var(--opinions-section-bg-color);
   display: flex;
@@ -501,6 +517,7 @@ header .container {
   margin-top: 50px;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -537,6 +554,7 @@ header .container {
   margin-top: 50px;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -602,6 +620,7 @@ header .container {
   margin-top: 50px;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -667,6 +686,7 @@ header .container {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 40px;
+  text-align: center;
 }
 
 .close-button {
@@ -705,6 +725,7 @@ header .container {
   letter-spacing: 0.01em;
   margin-bottom: 4px;
   display: block;
+  text-align: left;
 }
 
 .modal-contact-field {
@@ -715,10 +736,12 @@ header .container {
   margin-bottom: 10px;
   padding: 11px 12px;
   display: flex;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-contact-icon {
   fill: var(--modal-dec-icon-color);
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-contact-field:has(input:focus) {
@@ -754,10 +777,109 @@ header .container {
   line-height: 1.17;
   letter-spacing: 0.01em;
   color: var(--modal-input-color);
+  background-color: transparent;
+  transition: border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal textarea::placeholder {
   color: var(--modal-placeholder-color);
+}
+
+.modal textarea:focus {
+  border-color: var(--modal-dec-active-color);
+}
+
+.modal-contact-agreement {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  color: var(--modal-txt-color);
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+}
+
+.modal-contact-agreement label {
+  cursor: pointer;
+  line-height: 1.71;
+  letter-spacing: 0.03em;
+  font-size: 14px;
+  margin: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-contact-link {
+  color: var(--modal-link-color);
+  text-decoration: underline;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    text-decoration 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-contact-link:hover,
+.modal-contact-link:focus,
+.modal-contact-link:active {
+  color: var(--modal-link-active-color);
+  text-decoration: none;
+}
+
+.modal-contact-checkmark {
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.modal-contact-agreement svg {
+  padding: 0;
+  margin-right: 7px;
+  outline: none;
+  border: 2px solid var(--modal-dec-border-color);
+  border-radius: 2px;
+  width: 17px;
+  height: 16px;
+  fill: none;
+  background-color: transparent;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-contact-agreement:has(input:focus) svg,
+.modal-contact-agreement:has(label:hover) svg {
+  border-color: var(--modal-dec-active-color);
+}
+
+.modal-contact-agreement:has(input:checked) svg {
+  background-color: var(--modal-dec-active-color);
+  fill: var(--modal-checkmark-color);
+}
+
+.modal-contact-btn {
+  display: inline-block;
+  min-width: 200px;
+  min-height: 50px;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  color: var(--modal-btn-txt-color);
+  background-color: var(--modal-btn-bg-color);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-contact-btn:hover,
+.modal-contact-btn:focus {
+  background-color: var(--modal-btn-bg-active-color);
+  color: var(--modal-btn-txt-active-color);
 }
 
 /* ======PORTFOLIO====== */
@@ -790,6 +912,7 @@ header .container {
 .projects-head-filters ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -799,6 +922,7 @@ header .container {
   color: var(--filter-button-txt-color);
   border-width: 0;
   border-radius: 4px;
+  outline: none;
   text-align: center;
   font-size: 16px;
   font-weight: 500;
